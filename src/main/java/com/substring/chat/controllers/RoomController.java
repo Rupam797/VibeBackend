@@ -23,21 +23,19 @@ public class RoomController {
     //create room
     @PostMapping
     public ResponseEntity<?> createRoom(@RequestBody String roomId) {
-
-        if (roomRepository.findByRoomId(roomId) != null) {
-            //room is already there
-            return ResponseEntity.badRequest().body("Room already exists!");
-
+        try {
+            if (roomRepository.findByRoomId(roomId) != null) {
+                return ResponseEntity.badRequest().body("room already exists !!");
+            }
+            //create new room
+            Room room = new Room();
+            room.setRoomId(roomId);
+            roomRepository.save(room);
+            return ResponseEntity.status(HttpStatus.CREATED).body(room);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().body("Error: " + e.getMessage());
         }
-
-
-        //create new room
-        Room room = new Room();
-        room.setRoomId(roomId);
-        roomRepository.save(room);
-        return ResponseEntity.status(HttpStatus.CREATED).body(room);
-
-
     }
 
 
