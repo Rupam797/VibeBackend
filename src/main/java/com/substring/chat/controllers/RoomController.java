@@ -34,7 +34,7 @@ public class RoomController {
             return ResponseEntity.status(HttpStatus.CREATED).body(room);
         } catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity.internalServerError().body("Error: " + e.getMessage());
+            return ResponseEntity.internalServerError().body("Database connection failing: " + e.getMessage());
         }
     }
 
