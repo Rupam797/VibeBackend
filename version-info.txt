@@ -1,5 +1,0 @@
-Apache Maven 3.9.9 (8e8579a9e76f7d015ee5ec7bfcdc97d260186937)
-Maven home: C:\Users\ASUS\.m2\wrapper\dists\apache-maven-3.9.9\977a63e90f436cd6ade95b4c0e10c20c
-Java version: 17.0.8, vendor: Eclipse Adoptium, runtime: C:\Users\ASUS\AppData\Local\Programs\Eclipse Adoptium\jdk-17.0.8.7-hotspot
-Default locale: en_US, platform encoding: Cp1252
-OS name: "windows 11", version: "10.0", arch: "amd64", family: "windows"

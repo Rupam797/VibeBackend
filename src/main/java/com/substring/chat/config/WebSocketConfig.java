@@ -16,22 +16,19 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-
         config.enableSimpleBroker("/topic");
-        // /topic/messages
-
         config.setApplicationDestinationPrefixes("/app");
-        // /app/chat
-        // server-side: @MessagingMapping("/chat)
-
-
     }
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/chat")//connection establishment
-                .setAllowedOrigins(frontEndUrl.split(","))
+        // SockJS endpoint (fallback for browsers without native WebSocket)
+        registry.addEndpoint("/chat")
+                .setAllowedOriginPatterns("*")
                 .withSockJS();
+
+        // Raw WebSocket endpoint (primary for production — Render proxy works better with this)
+        registry.addEndpoint("/chat")
+                .setAllowedOriginPatterns("*");
     }
-    // /chat endpoint par connection apka establish hoga
 }
